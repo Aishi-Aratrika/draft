@@ -67,7 +67,6 @@ print(plot)
 
 
 
-
 ###--------Plot without regions---------------
 # Create the plot
 #plot <- ggplot(data_avail, aes(x = Year, y = Country, color = Survey, shape = HIVST_Category)) +
