@@ -28,7 +28,7 @@ country_to_region <- c(
   "Tanzania" = "Eastern", "Uganda" = "Eastern", "Zambia" = "Eastern", 
   "Zimbabwe" = "Eastern", "Burundi" = "Central", "Cameroon" = "Central", 
   "Central African Republic" = "Central", "Chad" = "Central", 
-  "Democratic Republic of Congo (DRC)" = "Central", "Gabon" = "Central", 
+  "DRC" = "Central", "Gabon" = "Central", 
   "São Tomé and Príncipe" = "Central", "Botswana" = "Southern", 
   "Eswatini" = "Southern", "Lesotho" = "Southern", "Namibia" = "Southern", 
   "South Africa" = "Southern", "Benin" = "Western", "Burkina Faso" = "Western", 
