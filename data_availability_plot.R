@@ -1,3 +1,4 @@
+
 setwd("D:/Downloads")
 library(readxl)
 library(dplyr)
@@ -17,9 +18,6 @@ data_avail <- data_avail %>%
     `Only HIVST uptake Question (ever used hivst)` == 1 ~ "HIVST Uptake",
     `Both questions` == 1 ~ "Both"
   ))
-
-# maximum year in the dataset
-max_year <- max(data_avail$Year)
 
 # Define the region for each country
 country_to_region <- c(
@@ -42,16 +40,7 @@ country_to_region <- c(
 data_avail$Region <- country_to_region[data_avail$Country]
 data_avail$Country <- factor(data_avail$Country, levels = names(country_to_region)[order(country_to_region)])
 
-# Calculate the midpoint of each region for labeling
-region_midpoints <- data_avail %>%
-  group_by(Region) %>%
-  summarise(Midpoint = mean(as.numeric(Country))) %>%
-  ungroup()
-
-# Join this back to the main data 
-data_avail <- left_join(data_avail, region_midpoints, by = "Region")
-
-# Create the plot with ordered countries and region labels
+# Creating the plot with facet_grid to separate by region and adding background rectangles
 plot <- ggplot(data_avail, aes(x = Year, y = Country, color = Survey, shape = HIVST_Category)) +
   geom_point(size = 3, alpha = 0.6) +  # Display the points
   scale_shape_manual(values = c("HIVST Awareness" = 16, "HIVST Uptake" = 17, "Both" = 18)) +
@@ -59,36 +48,14 @@ plot <- ggplot(data_avail, aes(x = Year, y = Country, color = Survey, shape = HI
   scale_x_continuous(breaks = 2012:2022, labels = 2012:2022) +
   labs(title = "Survey Data Availability on HIVST Uptake and Awareness", x = "Year", y = "Country", color = "Survey Type", shape = "HIVST Category") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "right") +
-  geom_text(data = region_midpoints, aes(x = max_year + 0.5, y = Midpoint, label = Region), angle = 90, hjust = 1, vjust = 0.5, inherit.aes = FALSE)  # Add vertical region labels on the right
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1), 
+    legend.position = "right",
+    panel.background = element_blank(), 
+    panel.grid.major = element_line(color = "grey95"),  # Very light gray grid lines
+    panel.grid.minor = element_line(color = "grey95"),  # Very light gray minor grid lines
+    strip.background = element_rect(fill = "grey85", color = NA)
+  ) +
+  facet_grid(Region ~ ., scales = "free_y", space = "free_y", switch = "y")
 
-# Print the plot
 print(plot)
-
-
-
-###--------Plot without regions---------------
-# Create the plot
-#plot <- ggplot(data_avail, aes(x = Year, y = Country, color = Survey, shape = HIVST_Category)) +
- # geom_point(size = 3, alpha = 0.6) +  # Adjust size and transparency of points
- # scale_shape_manual(values = c("HIVST Awareness" = 16, "HIVST Uptake" = 17, "Both" = 18)) +  # Specify shapes for each HIVST category
- # scale_color_manual(values = c("DHS" = "#8E24AA",   # Deep blue
-                               # "MICS" = "#43A047",  # Emerald green
-                              #  "PHIA" = "#D32F2F",  # Crimson red
-                               # "KAIS" = "#FFB300",  # Amber gold
-                               # "BAIS" = "#1E88E5")) +  # Rich purple
- # scale_x_continuous(breaks = 2012:2022, labels = 2012:2022) +  # Set x-axis to show every year from 2012 to 2022 as integers
-  #labs(title = "Survey Data Availability on HIVST Uptake and Awareness",
-      # x = "Year",
-       # y = "Country",
-       # color = "Survey Type",
-       # shape = "HIVST Category") +
- # theme_minimal() +
-  #theme(axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels for better readability
-       # legend.position = "right")  # Move legends to the right side of the plot
-
-# Print the plot
-#print(plot)
-
-
-
