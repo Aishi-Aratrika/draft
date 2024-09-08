@@ -46,7 +46,7 @@ plot <- ggplot(data_avail, aes(x = Year, y = Country, color = Survey, shape = HI
   scale_shape_manual(values = c("HIVST Awareness" = 16, "HIVST Uptake" = 17, "Both" = 18)) +
   scale_color_manual(values = c("DHS" = "#8E24AA", "MICS" = "#43A047", "PHIA" = "#D32F2F", "KAIS" = "#FFB300", "BAIS" = "#1E88E5")) +
   scale_x_continuous(breaks = 2012:2022, labels = 2012:2022) +
-  labs(title = "Survey Data Availability on HIVST Uptake and Awareness", x = "Year", y = "Country", color = "Survey Type", shape = "HIVST Category") +
+  labs(title = "Survey Data Availability on HIVST Awareness and Uptake", x = "Year", y = "Country", color = "Survey Type", shape = "HIVST Category") +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1), 

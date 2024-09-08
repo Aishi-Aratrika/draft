@@ -205,7 +205,7 @@ bais <- bais %>%
   )
 
 # Saving the bais dataframe
-saveRDS(bais, file = "bais_dataframe.rds")
+#saveRDS(bais, file = "bais_dataframe.rds")
 
 # unweighted prop vs weighted prop (for checking)
 #table(bais$hivst_use)
@@ -213,12 +213,12 @@ saveRDS(bais, file = "bais_dataframe.rds")
 #unweighted_prop_hivst_use <- 348 / 17205 # 0.02
 
 # Weighted prop
-# bais_design <- svydesign(
- # ids = ~psu, strata = ~strata, weights = ~ind_wt, data = bais, nest = TRUE)
+#bais_design <- svydesign(
+ #ids = ~psu, strata = ~strata, weights = ~ind_wt, data = bais, nest = TRUE)
 
 # Calculate the proportion of people who used HIV self-testing
-#prop_hivst_use_ci <- svyciprop(~I(hivst_use == 1), design = bais_design, method = "logit", level = 0.95)
-#prop_hivst_use_ci #0.02 
+#prop_hivst_use_bais <- svyciprop(~I(hivst_use == 1), design = bais_design, method = "logit", level = 0.95)
+#prop_hivst_use_bais #0.0213 (0.0179, 0.0252)
 
 
 

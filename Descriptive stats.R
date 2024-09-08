@@ -1,33 +1,56 @@
 
+# Table 1: proportions of people who knows about and used HIVST
 
-# Table 1 for proportions of people who have used HIVST
+# Function to calculate proportions for hivst_use
 
-# calculate prop function
-
-calculate_proportions <- function(data) {
+calculate_proportions_use <- function(data) {
 survey_designs <- svydesign(
   ids = ~psu, strata = ~strata, weights = ~ind_wt, data = data, nest = TRUE)
   prop <- svyciprop(~I(hivst_use == 1), design = survey_designs, method = "logit", level = 0.95)
   return(prop)
 }
 
+# Function to calculate proportions for hivst_knwldge
+
+calculate_proportions_knwldge <- function(data) {
+  survey_designs <- svydesign( 
+  ids = ~psu, strata = ~strata, weights = ~ind_wt, data = data, nest = TRUE)
+  prop <- svyciprop(~I(hivst_knwldge == 1), design = survey_designs, method = "logit", level = 0.95)
+  return(prop)
+}
+
 # ----------DHS--------------
-#calculate_proportions(list_dhs[[1]]) # checking function
-#calculate_proportions(list_dhs[[2]])
-#calculate_proportions(list_dhs[[3]])
-lapply(list_dhs, calculate_proportions)
+#calculate_proportions_use(list_dhs[[1]]) # checking function
+#calculate_proportions_use(list_dhs[[2]])
+#calculate_proportions_use (list_dhs[[3]])
+
+# Apply the function to the list of DHS datasets
+lapply(list_dhs, calculate_proportions_knwldge)
+lapply(list_dhs, calculate_proportions_use)
+
 
 
 # MICS (need to check NAs)
 
 # Modify the design to handle single-PSU strata
-options(survey.lonely.psu = "adjust") # This adjusts the variance for single-PSU strata
-lapply(cleaned_list_mics, calculate_proportions)
+options(survey.lonely.psu = "adjust") 
+lapply(cleaned_list_mics, calculate_proportions_use)
 
 
 
 # ------------PHIA--------------
-lapply(list_phia, calculate_proportions)
+lapply(list_phia, calculate_proportions_use)
+lapply(list_phia, calculate_proportions_knwldge)
+
+
+#------------KAIS---------------
+#prop_hivst_use_kais #0.03 (0.02, 0.04) 
+
+#----------BAIS----------------
+#prop_hivst_use_bais #0.0213 (0.0179, 0.0252)
+
+
+#------------------------------------------------------------------------------
 
 # Function to extract proportion and confidence intervals
 extract_proportion_ci <- function(result) {

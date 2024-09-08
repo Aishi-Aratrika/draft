@@ -213,14 +213,14 @@ kais <- kais %>%
   ) 
 
 # Saving the kais dataframe
-saveRDS(kais, file = "kais_dataframe.rds")
+#saveRDS(kais, file = "kais_dataframe.rds")
 
 # checking weighted proportion (manually 0.02)
 #kais_design <- svydesign(
   #ids = ~psu, strata = ~strata, weights = ~ind_wt, data = kais, nest = TRUE)
 
 # Calculate the proportion of people who used HIV self-testing
-#prop_hivst_use <- svyciprop(~I(hivst_use == 1), design = kais_design, method = "logit", level = 0.95)
-#prop_hivst_use #0.03 (0.02, 0.04) 
+#prop_hivst_use_kais <- svyciprop(~I(hivst_use == 1), design = kais_design, method = "logit", level = 0.95)
+#prop_hivst_use_kais #0.03 (0.02, 0.04) 
  
 
