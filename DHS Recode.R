@@ -1,6 +1,5 @@
 
 #fix hivst knowledge
-# fix province as chrc
 
 # Clearing all objects
 rm(list = ls())
@@ -308,8 +307,8 @@ bfadhs2021f <- bfadhs2021f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
-      TRUE ~ NA_real_
+      selftest_dhs %in% c(1, 2) ~ 1,
+      TRUE ~ 0
     ),
     hivst_use = case_when(
       selftest_dhs == 1 ~ 1,
@@ -431,8 +430,8 @@ bfadhs2021m <- bfadhs2021m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
-      TRUE ~ NA_real_
+      selftest_dhs %in% c(1, 2) ~ 1,
+      TRUE ~ 0
     ),
     hivst_use = case_when(
       selftest_dhs == 1 ~ 1,
@@ -584,8 +583,8 @@ bdidhs2016f <- bdidhs2016f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
-      TRUE ~ NA_real_
+      selftest_dhs %in% c(1, 2) ~ 1,
+      TRUE ~ 0
     ),
     hivst_use = case_when(
       selftest_dhs == 1 ~ 1,
@@ -715,7 +714,7 @@ bdidhs2016m <- bdidhs2016m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -843,7 +842,7 @@ cmrdhs2018f <- cmrdhs2018f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -989,7 +988,7 @@ cmrdhs2018m <- cmrdhs2018m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1119,7 +1118,7 @@ civdhs2021f <- civdhs2021f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1236,7 +1235,7 @@ civdhs2021m <- civdhs2021m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1372,7 +1371,7 @@ gabdhs2019f <- gabdhs2019f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1497,7 +1496,7 @@ gabdhs2019m <- gabdhs2019m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1614,7 +1613,7 @@ ghadhs2022f <- ghadhs2022f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1728,7 +1727,7 @@ ghadhs2022m <- ghadhs2022m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1854,7 +1853,7 @@ gindhs2018f$province <- as.character(gindhs2018f$province)
 gindhs2018f <- gindhs2018f %>% mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -1969,7 +1968,7 @@ gindhs2018m$province <- as.character(gindhs2018m$province)
 gindhs2018m <- gindhs2018m %>% mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -2082,7 +2081,7 @@ kendhs2022f <- kendhs2022f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -2194,7 +2193,7 @@ kendhs2022m$province <- as.character(kendhs2022m$province)
 kendhs2022m <- kendhs2022m %>% mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -2314,7 +2313,7 @@ lbrdhs2019f$province <- as.character(lbrdhs2019f$province)
 lbrdhs2019f <- lbrdhs2019f %>% mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -2418,7 +2417,7 @@ lbrdhs2019m$province <- as.character(lbrdhs2019m$province)
 lbrdhs2019m <- lbrdhs2019m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -2527,7 +2526,7 @@ mdgdhs2021f$province <- as.character(mdgdhs2021f$province)
 mdgdhs2021f <- mdgdhs2021f %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -2633,7 +2632,7 @@ mdgdhs2021m$province <- as.character(mdgdhs2021m$province)
 mdgdhs2021m <- mdgdhs2021m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -2757,7 +2756,7 @@ mwidhs2015f <- mwidhs2015f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -2881,7 +2880,7 @@ mwidhs2015m <- mwidhs2015m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -3000,7 +2999,7 @@ mlidhs2018f$province <- as.character(mlidhs2018f$province)
 mlidhs2018f <- mlidhs2018f %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -3105,7 +3104,7 @@ mlidhs2018m$province <- as.character(mlidhs2018m$province)
 mlidhs2018m <- mlidhs2018m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -3219,7 +3218,7 @@ mrtdhs2019f$province <- as.character(mrtdhs2019f$province)
 mrtdhs2019f <- mrtdhs2019f %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -3316,7 +3315,7 @@ mrtdhs2019m$province <- as.character(mrtdhs2019m$province)
 mrtdhs2019m <- mrtdhs2019m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -3448,7 +3447,7 @@ rwadhs2019f$province <- as.character(rwadhs2019f$province)
 rwadhs2019f <- rwadhs2019f %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -3553,7 +3552,7 @@ rwadhs2019m$province <- as.character(rwadhs2019m$province)
 rwadhs2019m <- rwadhs2019m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -3673,7 +3672,7 @@ sendhs2017f <- sendhs2017f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -3802,7 +3801,7 @@ sendhs2017m <- sendhs2017m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -3932,7 +3931,7 @@ sledhs2019f <- sledhs2019f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -4054,7 +4053,7 @@ sledhs2019m <- sledhs2019m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -4184,7 +4183,7 @@ zafdhs2016f <- zafdhs2016f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -4305,7 +4304,7 @@ zafdhs2016m <- zafdhs2016m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -4438,7 +4437,7 @@ tzadhs2022f$province <- as.character(tzadhs2022f$province)
 tzadhs2022f <- tzadhs2022f %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -4558,7 +4557,7 @@ tzadhs2022m$province <- as.character(tzadhs2022m$province)
 tzadhs2022m <- tzadhs2022m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -4686,7 +4685,7 @@ ugadhs2016f$province <- as.character(ugadhs2016f$province)
 ugadhs2016f <- ugadhs2016f %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -4791,7 +4790,7 @@ ugadhs2016m$province <- as.character(ugadhs2016m$province)
 ugadhs2016m <- ugadhs2016m %>% mutate(
   hivst_knwldge = case_when(
     selftest_dhs == 0 ~ 0,
-    selftest_dhs == 2 ~ 1,
+    selftest_dhs %in% c(1, 2) ~ 1,
     TRUE ~ NA_real_
   ),
   hivst_use = case_when(
@@ -4913,7 +4912,7 @@ zmbdhs2018f <- zmbdhs2018f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -5039,7 +5038,7 @@ zmbdhs2018m <- zmbdhs2018m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -5171,7 +5170,7 @@ zwedhs2015f <- zwedhs2015f %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
@@ -5295,7 +5294,7 @@ zwedhs2015m <- zwedhs2015m %>%
   mutate(
     hivst_knwldge = case_when(
       selftest_dhs == 0 ~ 0,
-      selftest_dhs == 2 ~ 1,
+      selftest_dhs %in% c(1, 2) ~ 1,
       TRUE ~ NA_real_
     ),
     hivst_use = case_when(
